@@ -1,0 +1,114 @@
+Desafio Back-end: Construção de uma API RESTful para Gerenciamento de Tarefas
+Objetivo
+Desenvolver uma API RESTful que permita a criação, leitura, atualização e exclusão de tarefas, bem como filtragem de tarefas com base no seu status. A aplicação deve ser construída com boas práticas de desenvolvimento, modularização de código, validação de dados e interação com um banco de dados.
+Descrição da Tarefa
+Você deverá criar uma API que possibilite as seguintes operações:
+Criar uma tarefa (POST /tarefas):
+A tarefa deve possuir as seguintes propriedades:
+Título: (String, obrigatório)
+Descrição: (String, opcional)
+Status: (String, obrigatório – valores possíveis: "pendente", "realizando", "concluída")
+Data de vencimento: (Date, opcional, deve ser uma data válida)
+Exemplo de requisição (JSON):
+
+{
+  "titulo": "Estudar API",
+  "descricao": "Estudar como criar uma API RESTful",
+  "status": "pendente",
+  "data_vencimento": "2024-12-31"
+}
+Listar todas as tarefas (GET /tarefas):
+Retornar todas as tarefas cadastradas no sistema.
+A resposta deve ser uma lista de tarefas, com seus respectivos detalhes.
+Exemplo de resposta (JSON):
+
+[
+  {
+    "id": 1,
+    "titulo": "Estudar API",
+    "descricao": "Estudar como criar uma API RESTful",
+    "status": "pendente",
+    "data_vencimento": "2024-12-31"
+  },
+  {
+    "id": 2,
+    "titulo": "Finalizar projeto",
+    "descricao": "Finalizar o projeto de API",
+    "status": "realizando",
+    "data_vencimento": "2024-12-25"
+  }
+]
+Buscar uma tarefa por ID (GET /tarefas/{id}):
+Permitir buscar detalhes de uma tarefa específica pelo seu ID.
+Exemplo de resposta (JSON):
+
+{
+  "id": 1,
+  "titulo": "Estudar API",
+  "descricao": "Estudar como criar uma API RESTful",
+  "status": "pendente",
+  "data_vencimento": "2024-12-31"
+}
+Atualizar uma tarefa (PUT /tarefas/{id}):
+Permitir a atualização das informações de uma tarefa, como título, descrição, status ou data de vencimento.
+A requisição deve permitir a modificação de qualquer uma dessas propriedades.
+Exemplo de requisição (JSON):
+
+{
+  "titulo": "Estudar API - Revisão",
+  "descricao": "Revisar os conceitos de API RESTful",
+  "status": "realizando",
+  "data_vencimento": "2024-12-28"
+}
+Excluir uma tarefa (DELETE /tarefas/{id}):
+Permitir a remoção de uma tarefa pelo seu ID.
+Filtrar tarefas por status (GET /tarefas?status={status}):
+Permitir a filtragem das tarefas com base no status, onde o parâmetro status pode ter os valores: "pendente", "realizando", ou "concluída".
+Exemplo de requisição:
+
+GET /tarefas?status=pendente
+
+
+Tecnologias e Ferramentas
+Linguagem: Livre escolha, mas você pode escolher entre as seguintes opções:
+JavaScript/Node.js (usando Express.js)
+Python (usando Django ou Flask)
+Banco de Dados: Livre escolha, mas você pode escolher entre as seguintes opções:
+MongoDB 
+SQLite 
+MySQL/PostgreSQL
+Ferramentas recomendadas para organização do projeto:
+Postman/Insomnia para testar a API.
+GitHub para versionamento e publicação do código.
+
+Requisitos de Implementação
+Validação de Dados:
+O título e o status são obrigatórios.
+A data de vencimento (se fornecida) deve ser uma data válida. Caso contrário, deve ser tratada como não fornecida.
+Respostas HTTP:
+Use respostas HTTP apropriadas:
+200 OK para operações bem-sucedidas.
+201 Created para criação de novos recursos.
+400 Bad Request para erros de validação.
+404 Not Found para quando o recurso não for encontrado.
+500 Internal Server Error para erros no servidor.
+Organização Modular do Código:
+Separe as diferentes funcionalidades da API em módulos. Por exemplo, tenha um módulo para o gerenciamento de tarefas, um módulo para a conexão com o banco de dados, etc.
+
+Critérios de Avaliação
+Implementação Completa: As operações CRUD (Create, Read, Update, Delete) devem estar corretamente implementadas e funcionando.
+Organização do Código: O código deve ser bem organizado
+Uso de Banco de Dados: A API deve estar corretamente conectada ao banco de dados, e as operações de criação, leitura, atualização e exclusão devem refletir as mudanças no banco de dados.
+Validação e Tratamento de Erros: A API deve tratar corretamente os erros e validar as entradas do usuário.
+Documentação(Bônus): Documentação clara e concisa sobre a API e como rodar o projeto.
+
+Entrega
+GitHub: Publique o código no GitHub e envie o link do repositório na atividade do Classroom
+
+Exemplo de Fluxo
+Criar tarefa: O usuário envia uma requisição POST para /tarefas com os dados da tarefa. A aplicação valida os dados, cria a tarefa no banco de dados e responde com a tarefa criada.
+Listar tarefas: O usuário envia uma requisição GET para /tarefas e a API responde com todas as tarefas no banco de dados.
+Buscar tarefa: O usuário envia uma requisição GET para /tarefas/{id}. A API retorna os detalhes da tarefa correspondente ao ID fornecido.
+Atualizar tarefa: O usuário envia uma requisição PUT para /tarefas/{id} com os novos dados da tarefa. A API atualiza a tarefa no banco de dados e responde com os dados atualizados.
+Excluir tarefa: O usuário envia uma requisição DELETE para /tarefas/{id}. A API remove a tarefa do banco de dados e responde com uma mensagem de sucesso.
+Filtrar por status: O usuário envia uma requisição GET para /tarefas?status=pendente. A API responde com as tarefas que têm o status "pendente".
